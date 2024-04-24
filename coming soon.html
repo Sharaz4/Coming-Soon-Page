@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Coming Soon</title>
+        <style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    body{
+        background-image: url(./background.png);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .container{
+        margin: 10% auto;
+        position: relative;
+    }
+    .section{
+        padding: 10px 30px;
+    }
+    .text{
+        padding: 10px 150px;
+        color: #fff;
+        font-size: 20px;
+    }
+    .heading{
+        color: #fff;
+        font-size: 65px;
+    }
+    .heading span{
+        color: brown;
+    }
+    .timer{
+        padding: 10px 50px;
+        width: 50%;
+        display: flex;
+        color: #fff;
+        justify-content: space-between;
+        padding: 10px 100px;
+    }
+    .timer h2{
+        font-size: 60px;
+    }
+    .timer span{
+        font-size: 20px;
+    }
+    .btn{
+        background-color: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+        font-size: 15px;
+        padding: 15px 20px;
+        margin: 20px 100px;
+    }
+    .btn img{
+        width: 10px;
+    }
+    .image img{
+        position: absolute;
+        right: 15%;
+        width: 10%;
+        bottom: 0%;
+        animation: rocket 3s linear infinite;
+    }
+    @keyframes rocket {
+        0%{
+            bottom: 0%;
+            opacity: 0;
+        }
+        100%{
+            bottom: 105%;
+            opacity: 1;
+        }
+        
+    }
+    </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="section">
+                <p class="text">Website is Under Maintanance!</p>
+                <h1 class="heading">We`re <span>Lounching</span> Soon...</h1>
+            </div>
+            <div class="timer">
+                <div>
+                    <h2 id="day">00</h2>
+                    <span>Days</span>
+                </div>
+                <div>
+                    <h2 id="hours">00</h2>
+                    <span>Hours</span>
+                </div>
+                <div>
+                    <h2 id="Mint">00</h2>
+                    <span>Minunts</span>
+                </div>
+                <div>
+                    <h2 id="sec">00</h2>
+                    <span>Secondes</span>
+                </div>
+            </div>
+            <button class="btn"> Learn More <img src="./triangle.png"></button>
+        </div>
+
+        <div class="image">
+            <img src="./rocket.png">
+        </div>
+
+        <script>
+        let countDown = new Date("april 23, 2029 00:00:00").getTime();
+        let x =setInterval(function(){
+            let now = new Date().getTime();
+            let distance = countDown - now;
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+            document.getElementById("day").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("Mint").innerHTML = minutes;
+            document.getElementById("sec").innerHTML = seconds;
+
+            if(distance < 0){
+                clearInterval(x);
+                document.getElementById("day").innerHTML = "00";
+            document.getElementById("hours").innerHTML = "00";
+            document.getElementById("Mint").innerHTML = "00";
+            document.getElementById("sec").innerHTML = "00";
+            }
+        },1000);
+    </script>
+    </body>
+</html>
